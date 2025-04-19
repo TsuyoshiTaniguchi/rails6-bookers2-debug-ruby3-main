@@ -28,11 +28,14 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully."
     else
+      Rails.logger.debug "Book save failed: #{@book.errors.full_messages}"
       @books = Book.all
       @new_book = Book.new
       render :index
     end
   end
+
+    
 
   def edit
     @book = Book.find(params[:id])
@@ -57,6 +60,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :user_id)
+    params.require(:book).permit(:title, :body)
   end
 end
