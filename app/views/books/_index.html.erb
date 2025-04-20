@@ -16,7 +16,11 @@
         </td>
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
+        c
+        <td class="text-muted">コメント数: <%= book.book_comments.count %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+
