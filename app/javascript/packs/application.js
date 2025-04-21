@@ -16,3 +16,12 @@ import "../stylesheets/application";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(document).on("ajax:success", ".favorite-btn", function(event, data) {
+  console.log("Ajaxリクエスト成功", data);
+  var bookId = data.book_id;
+  var favoritesCount = data.favorites_count;
+
+  $("#book_" + bookId).find(".favorites-count").html(favoritesCount);
+  $("#book_" + bookId).find(".favorite-btn").replaceWith(data.favorite_button_html);
+});

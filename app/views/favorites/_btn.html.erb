@@ -1,11 +1,13 @@
-<% if book.favorited_by?(current_user) %>
-  <%= link_to book_favorites_path(book), method: :delete,  style: "color: red;" do %>
-    <i class="fas fa-heart" aria-hidden="true"></i>
-    <%= book.favorites.count %>
+<div id="book_<%= book.id %>">
+  <% if book.favorited_by?(current_user) %>
+    <%= link_to book_favorites_path(book), method: :delete, remote: true, class: "favorite-btn", style: "color: red;" do %>
+      <i class="fas fa-heart" aria-hidden="true"></i>
+      <span class="favorites-count"><%= book.favorites.count %></span>
+    <% end %>
+  <% else %>
+    <%= link_to book_favorites_path(book), method: :post, remote: true, class: "favorite-btn" do %>
+      <i class="fas fa-heart" aria-hidden="true"></i>
+      <span class="favorites-count"><%= book.favorites.count %></span>
+    <% end %>
   <% end %>
-<% else %>
-  <%= link_to book_favorites_path(book), method: :post do %>
-    <i class="fas fa-heart" aria-hidden="true"></i>
-    <%= book.favorites.count %>
-  <% end %>
-<% end %>
+</div>

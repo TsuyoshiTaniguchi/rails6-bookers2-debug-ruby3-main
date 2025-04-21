@@ -1,1 +1,11 @@
-$('#favorite_buttons_<%= @book.id %>').html("<%= j(render "favorites/favorite", book: @book) %>");
+$(document).on("ajax:success", ".favorite-btn", function(event, data) {
+  var bookId = data.book_id;
+  var favoritesCount = data.favorites_count;
+
+  // いいねボタンとカウントを更新
+  $("#book_" + bookId).find(".favorites-count").html(favoritesCount);
+  $("#book_" + bookId).find(".favorite-btn").replaceWith(data.favorite_button_html);
+});
+
+$("#book_<%= @book.id %>").find(".favorite-btn").replaceWith("<%= j(render partial: 'favorites/favorite-btn', locals: { book: @book }) %>");
+$("#book_<%= @book.id %>").find(".favorites-count").html("<%= @book.favorites.count %>");
