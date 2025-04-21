@@ -16,14 +16,14 @@
       <% end %>
     </th>
   </tr>
-  
+  <tr>
     <th>followers</th>
     <th>
       <%= link_to(user_followers_path(user.id)) do %>
         <%= user.followers.count %>
       <% end %>
     </th>
-  
+  </tr>
   <tr>
     <th>
       <% unless user == current_user %>
