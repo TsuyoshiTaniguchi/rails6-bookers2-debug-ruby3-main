@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ .follow-button {
+  width: 100%;
+  white-space: nowrap;
+  display: inline-block;
+}
