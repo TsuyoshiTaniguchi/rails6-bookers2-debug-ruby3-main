@@ -18,8 +18,8 @@
       <td class="favorite-btn"><%= render "favorites/btn", book: book %></td>
       <td class="comments-count">コメント数: <%= book.book_comments.count %></td>
       <td class="likes-count">いいね数: <%= book.favorites.count %></td> <!-- いいね数を表示 -->
+      <td class="views-count">閲覧数: <%= book.views_count %></td> <!-- 閲覧数を表示 -->
     </tr>
   <% end %>
   </tbody>
-
 </table>
