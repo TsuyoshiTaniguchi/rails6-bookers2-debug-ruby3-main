@@ -1,0 +1,6 @@
+<% if @chat.present? %>
+  $(".message").append("<p style='text-align: right;'>" + "<%= j @chat.message %>" + "</p>");
+  $("#chat_message").val(""); // 入力フォームをクリア
+<% else %>
+  console.log("エラー: @chat が nil です");
+<% end %>

@@ -1,0 +1,10 @@
+<h2>DMルーム</h2>
+
+<% @chats.each do |chat| %>
+  <p><strong><%= chat.user.name %>:</strong> <%= chat.message %></p>
+<% end %>
+
+<%= form_with model: Chat.new, url: chats_path(room_id: @room.id) do |f| %>
+  <%= f.text_field :message, maxlength: 140, placeholder: "140字以内でメッセージを送信" %>
+  <%= f.submit "送信" %>
+<% end %>
